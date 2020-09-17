@@ -1,0 +1,13 @@
+.desc{
+    text-align:center;
+    max-width: 50%;
+    margin: 0 auto;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    font-size: 22px;
+}
+
+.banner-image{
+    height: 350px;
+    width: 100%;
+}
