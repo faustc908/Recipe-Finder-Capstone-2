@@ -38,33 +38,31 @@ const ShowRecipe = () => {
 
   return (
     <Fragment>
-      <table>
-        <thead>
-          <tr>
-            <th>Description</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div>
+        <ul>
+          <li>Description</li>
+          <li>Edit</li>
+          <li>Delete</li>
+        </ul>
+        <div>
           {recipe.map((recipe) => (
-            <tr key={recipe.recipe_id}>
-              <td>{recipe.description}</td>
-              <td>
+            <p key={recipe.recipe_id}>
+              <p>{recipe.description}</p>
+              <div>
                 <EditRecipe recipe={recipe} />
-              </td>
-              <td>
+              </div>
+              <div>
                 <button
                   type="submit"
                   onClick={() => removeRecipe(recipe.recipe_id)}
                 >
                   Delete
                 </button>
-              </td>
-            </tr>
+              </div>
+            </p>
           ))}
-        </tbody>
-      </table>
+        </div>
+      </div>
     </Fragment>
   );
 };
