@@ -1,3 +1,0 @@
--create custom URL for site.
--adding favicon
--breaking down App into a couple more components
