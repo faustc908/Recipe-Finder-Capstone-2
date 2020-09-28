@@ -1,49 +1,18 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import "./RecipeForm.css";
 import EditRecipe from "../EditRecipe/EditRecipe";
 
-const ShowRecipe = () => {
-  const [recipe, setRecipe] = useState([]);
-
-  //delete todo function
-
-  const removeRecipe = async (id) => {
-    try {
-      fetch(`http://localhost:8000/recipe/${id}`, {
-        method: "DELETE",
-      });
-
-      setRecipe(recipe.filter((recipe) => recipe.recipe_id !== id));
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
-
-  const grabRecipe = async () => {
-    try {
-      const response = await fetch("http://localhost:8000/recipe");
-      const jsonData = await response.json();
-
-      setRecipe(jsonData);
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
-
-  useEffect(() => {
-    grabRecipe();
-  }, []);
+const ShowRecipe = ({ recipe, removeRecipe }) => {
+  //delete recipe function
 
   console.log(recipe);
 
   return (
     <Fragment>
-      <div>
-        <ul>
-          <li>Description</li>
-          <li>Edit</li>
-          <li>Delete</li>
-        </ul>
+      <div className="form">
+        <div className="list">
+          <p>Description Edit Delete</p>
+        </div>
         <div>
           {recipe.map((recipe) => (
             <p key={recipe.recipe_id}>

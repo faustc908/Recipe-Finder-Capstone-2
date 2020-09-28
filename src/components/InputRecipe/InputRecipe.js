@@ -1,26 +1,39 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
+import "./InputRecipe.css";
 
-const InputRecipe = () => {
+const InputRecipe = ({ updateRecipe }) => {
   const [description, setDescription] = useState("");
+
+  // Post function to post recipes
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
     try {
       const body = { description };
-      fetch("http://localhost:8000/recipe", {
+
+      const header = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
+      };
+      alert("saving");
+      await fetch("http://localhost:8000/recipe", header).then(async function (
+        response
+      ) {
+        // alert(response);
+        const data = await response.json();
+        alert(data.description);
+        updateRecipe();
       });
 
-      window.location = "/";
+      //window.location = "/";
     } catch (err) {
       console.error(err.message);
     }
   };
 
   return (
-    <Fragment>
+    <div className="input">
       <h1>User Recipes</h1>
       <form onSubmit={onSubmitForm}>
         <input
@@ -28,9 +41,11 @@ const InputRecipe = () => {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <button type="button">Add</button>
+        <button type="button" onClick={onSubmitForm}>
+          Add
+        </button>
       </form>
-    </Fragment>
+    </div>
   );
 };
 

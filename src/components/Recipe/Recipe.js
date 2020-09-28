@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./recipe.module.css";
 
-//Recipe render from call
+// Recipe render from call
 
 const Recipe = ({ title, calories, image, ingredients, url }) => {
   return (

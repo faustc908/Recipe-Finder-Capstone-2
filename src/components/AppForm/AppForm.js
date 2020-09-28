@@ -1,12 +1,12 @@
 import React from "react";
 
-//Present Search Form
+// Present Search Form
 
 const AppForm = (props) => {
   const inputEl = React.useRef(null);
 
   // Get value of input element and pass to onSearch event.
-   
+
   const handleSearch = (e) => {
     e.preventDefault();
     props.onSearch(inputEl.current.value);
